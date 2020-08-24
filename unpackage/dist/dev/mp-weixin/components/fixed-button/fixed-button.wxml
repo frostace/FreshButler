@@ -1,0 +1,1 @@
+<view class="_div data-v-56076b64"><button data-event-opts="{{[['tap',[['handleClick',['$event']]]]]}}" hidden="{{!(visible)}}" bindtap="__e" class="data-v-56076b64"><block wx:if="{{$slots.default}}"><label class="button-content _span data-v-56076b64"><slot></slot></label></block></button></view>

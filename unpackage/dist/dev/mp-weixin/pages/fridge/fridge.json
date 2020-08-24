@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "冰箱",
+  "navigationBarBackgroundColor": "#eee",
+  "usingComponents": {
+    "uni-indexed-list": "/components/uni-indexed-list/uni-indexed-list",
+    "fixed-button": "/components/fixed-button/fixed-button"
+  }
+}

@@ -1,0 +1,67 @@
+
+.gray{
+	background: #eef3f9;
+	color: #555555;
+}
+.light{
+	background: #f5f7fa;
+	color: #C8C7CC;
+}
+.count-box{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	width: 220rpx;
+	height: 60rpx;
+	border-radius: 5px;
+	z-index: 1;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+.count-box-light{
+	border: 1px solid #add4ff;
+}
+.count-box-gray{
+	border: 1px solid #e4e4e4;
+}
+.count-pub{
+	width: 80rpx;
+	height: 100%;
+	text-align: center;
+	font-weight: 200;
+	line-height: 60rpx;
+	font-size: 20px;
+}
+.count-minus{
+	border-top-left-radius:4px;
+	border-bottom-left-radius:4px;
+}
+.count-add{
+	border-top-right-radius:4px;
+	border-bottom-right-radius:4px;
+}
+.count-input{
+	width: 110rpx;
+	height: 100%;
+	padding: 6rpx 10rpx;
+	box-sizing: border-box;
+	color: #808080;
+	font-size: 26rpx;
+	text-align: center;
+}
+.count-unit {
+	font-size: 26rpx;
+	color: #808080;
+	padding-right: 4px;
+}
+
