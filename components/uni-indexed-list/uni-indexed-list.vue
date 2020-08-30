@@ -152,7 +152,7 @@
 						// TODO: temp setups for unit and baseUnit
 						obj.thresh = 10;
 						obj.unit = "克";
-						obj.baseUnit = 10;
+						obj.baseUnit = 5;
 						return obj;
 					})
 					this.lists.push({

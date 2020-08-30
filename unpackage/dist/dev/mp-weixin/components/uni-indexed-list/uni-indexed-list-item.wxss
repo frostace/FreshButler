@@ -24,6 +24,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.data-v-6a7f6b8c:export {
+  primaryColor: #409eff;
+}
+.data-v-6a7f6b8c:export {
+  primaryColor: #409eff;
+}
 @-webkit-keyframes spin-data-v-6a7f6b8c {
 100% {
     -webkit-transform: rotate(360deg);
@@ -60,6 +66,7 @@
           align-items: center;
   -webkit-flex-wrap: wrap;
           flex-wrap: wrap;
+  position: relative;
   margin: 10px 0 0 10px;
   padding: 8px 10px;
   border: solid 2px #fff;
@@ -161,6 +168,17 @@
 .uni-indexed-list__item-content.data-v-6a7f6b8c, .uni-indexed-list__item-amount.data-v-6a7f6b8c, .uni-indexed-list__item-unit.data-v-6a7f6b8c, .uni-indexed-list__item-operator.data-v-6a7f6b8c {
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+}
+.uni-indexed-list__item-amount-indicator.data-v-6a7f6b8c {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+.uni-indexed-list__item-runningout .uni-indexed-list__item-amount-indicator.data-v-6a7f6b8c {
+  background-color: rgba(255, 127, 80, 0.6);
 }
 .uni-indexed-list.data-v-6a7f6b8c {
   display: -webkit-box;

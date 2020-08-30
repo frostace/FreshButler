@@ -1,10 +1,14 @@
 <template>
-	<view>
+	<view @click="globalClick">
 		<uni-indexed-list :options="ingredientList" :showSelect="false" @click="bindClick"></uni-indexed-list>
 		<view class="floating-section">
 			<fixed-button>
 				<view class="floating-discovery">
-					<view class="floating-discovery-ingrdt" >{{trimmedIngredients}}</view>
+					<view
+						v-if="selectedIngredients.length > 0"
+						class="floating-discovery-ingrdt"
+					>{{trimmedIngredients}}
+					</view>
 					<image 
 						class="floating-discovery-icon" 
 						src="../../static/icon/knife-fork.png" 
@@ -12,7 +16,28 @@
 					</image>
 				</view>
 			</fixed-button>
-			<fixed-button><view>+</view></fixed-button>
+			<!-- <fixed-button><view>+</view></fixed-button> -->
+			<uni-fab
+				@trigger="trigger"
+			>
+				<template v-slot:content>
+					<view
+						class="uni-fab-item"
+						v-for="(item, idx) in popperIcons"
+						:key="item.text"
+						@click="handleClickItem($event, item.text)"
+					>
+						<image
+							class="floating-discovery-icon uni-fab-item-icon" 
+							:src="item.imgPath">
+						</image>
+						<text class="uni-fab-item-text">{{item.text}}</text>
+					</view>
+				</template>
+				<template v-slot:box>
+					+
+				</template>
+			</uni-fab>
 		</view>
 	</view>
 </template>
@@ -20,87 +45,36 @@
 <script>
 	import uniIndexedList from "@/components/uni-indexed-list/uni-indexed-list.vue";
 	import fixedButton from "@/components/fixed-button/fixed-button.vue";
+	import uniFab from '@/components/uni-fab/uni-fab.vue';
+	import uniIcons from '@/components/uni-icons/uni-icons.vue';
+	import {mapState} from 'vuex';
+	
 	export default {
 		components: {
 			uniIndexedList,
 			fixedButton,
+			uniFab,
+			uniIcons
 		},
 		data() {
 			return {
-				ingredientList: [
+				popperExpanded: false,
+				popperIcons: [
 					{
-						"letter": "主食",
-						"data": [
-							"山东拉面",
-							"意面",
-							"年糕",
-							"大米",
-						]
-					}, 
-					{
-						"letter": "蔬菜",
-						"data": [
-							"大白菜",
-							"莴苣",
-							"西洋菜",
-							"芥兰苗",
-							"胡萝卜",
-							"鸡腿菇"
-						]
+						imgPath: "../../static/icon/edit.png",
+						text: "编辑",
+						
 					},
 					{
-						"letter": "肉类",
-						"data": [
-							"鸡胸肉",
-							"牛尾",
-							"排骨",
-							"五花肉",
-							"鸡翅",
-							"牛绞肉"
-						]
-					},
-					{
-						"letter": "水果",
-						"data": [
-							"香蕉",
-							"苹果",
-							"西瓜",
-							"柠檬",
-							"橙子",
-							"榴莲"
-						]
-					},
-					{
-						"letter": "调料",
-						"data": [
-							"盐",
-							"糖",
-							"蕃茄酱",
-							"胡椒粉",
-							"小茴香",
-							"醋",
-							"酱油"
-						]
-					},
-					{
-						"letter": "饮料",
-						"data": [
-							"可乐",
-							"柠檬汁",
-							"白葡萄酒",
-						]
-					},
-					{
-						"letter": "其他",
-						"data": [
-							"榨菜",
-						]
-					},
+						imgPath: "../../static/icon/dice-five.png",
+						text: "随机选菜",
+					}
 				],
 				selectedIngredients: [],
 			};
 		},
 		computed: {
+			...mapState(['login', 'ingredientList']),
 			trimmedIngredients() {
 				let completeIngredients = this.selectedIngredients.map(item => item.charAt(0)).toString();
 				return completeIngredients.length > 6 ? completeIngredients.slice(0, 6) + "..." : completeIngredients;
@@ -110,12 +84,20 @@
 			bindClick(e, obj) {
 				let ingrdtIdx = this.selectedIngredients.indexOf(e.item.name);
 				ingrdtIdx !== -1 ? this.selectedIngredients.splice(ingrdtIdx, 1) : this.$set(this.selectedIngredients, this.selectedIngredients.length, e.item.name);
+			},
+			handleClickItem(e, text) {
+				uni.$emit('hideItems');
+			},
+			trigger() {},
+			globalClick() {
+				uni.$emit('hideItems');
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
+	
 	.floating-section {
 		width: calc(100vw - 80px);
 		
@@ -145,4 +127,32 @@
 		height: 28px;
 	}
 	
+	.uni-fab-item {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		
+		color: white;
+		font-size: 14px;
+		height: 30px;
+		&:not(:last-child) {
+			border-bottom: solid 1px white;
+			padding-bottom: 10px;
+		}
+		&:not(:first-child) {
+			padding-top: 10px;
+		}
+		
+		&-icon {
+			flex: 1 0 auto;
+			margin-right: 10px;
+		}
+		
+		&-text {
+			flex: 1 0 auto;
+			width: 70px;
+		}
+		
+	}
 </style>

@@ -7,9 +7,14 @@ $--button-default-border-color: #dcdfe6 !default;
 $--decent-green: #38ada9;
 $--key-color: #38ada9;
 $--primary-color: #409eff;
+$--primary-color-light: #d9f1ff;
 $--success-color: #67c23a;
 $--info-color: #909399;
 $--warning-color: #e6a23c;
 $--danger-color: #f56c6c;
 $--decent-black: #606266;
 $--decent-gray: #2c3e50;
+
+:export {
+	primaryColor: $--primary-color;
+}

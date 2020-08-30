@@ -10,8 +10,9 @@
 				:class="{
 					'uni-indexed-list__item-active' : item.active,
 					'uni-indexed-list__item-editing' : item.editing,
-					'uni-indexed-list__item-insuff' : item.amount < item.thresh,
-					'uni-indexed-list__item-runout' : item.amount <= 0,
+					'uni-indexed-list__item-insuff' : item.amount < item.baseUnit, // disable minus button
+					'uni-indexed-list__item-runningout' : item.amount < item.thresh && item.amount > 0, // highlight hint
+					'uni-indexed-list__item-runout' : item.amount <= 0, // grayify whole button
 				}"
 				hover-class="uni-indexed-list__item--hover"
 				@tap="handleItemTap($event, item, index)"
@@ -31,6 +32,7 @@
 						<text class="uni-indexed-list__item-operator operator-add" @tap="updateAmount(1, item)">+</text>
 					</view>
 				</view>
+				<view class="uni-indexed-list__item-amount-indicator"></view>
 			</view>
 		</view>
 	</view>
@@ -112,6 +114,7 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "../../common/var.scss";
 	@import "../../common/presets.scss";
 	.uni-indexed-list__list {
 		/* #ifndef APP-NVUE */
@@ -131,6 +134,7 @@
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
+		position: relative;
 		margin: 10px 0 0 10px;
 		padding: 8px 10px;
 		border: solid 2px #fff;
@@ -141,11 +145,11 @@
 			margin-right: 10px;
 		}
 		&-active {
-			border-color: #d9f1ff;
-			background-color: transparentize($color: #d9f1ff, $amount: 0.4);
+			border-color: $--primary-color-light;
+			background-color: transparentize($color: $--primary-color-light, $amount: 0.4);
 		}
 		&-editing {
-			border-color: #d9f1ff;
+			border-color: $--primary-color-light;
 			@include deeper-shadow;
 		}
 	}
@@ -214,6 +218,17 @@
 		}
 		&-content, &-amount, &-unit, &-operator {
 			@include decent-transition;
+		}
+		&-amount-indicator {
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			position: absolute;
+			top: 3px;
+			right: 3px;
+			.uni-indexed-list__item-runningout & {
+				background-color: transparentize($color: coral, $amount: 0.4);
+			}
 		}
 	}
 

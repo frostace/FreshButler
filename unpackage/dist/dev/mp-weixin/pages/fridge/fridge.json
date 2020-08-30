@@ -3,6 +3,8 @@
   "navigationBarBackgroundColor": "#eee",
   "usingComponents": {
     "uni-indexed-list": "/components/uni-indexed-list/uni-indexed-list",
-    "fixed-button": "/components/fixed-button/fixed-button"
+    "fixed-button": "/components/fixed-button/fixed-button",
+    "uni-fab": "/components/uni-fab/uni-fab",
+    "uni-icons": "/components/uni-icons/uni-icons"
   }
 }

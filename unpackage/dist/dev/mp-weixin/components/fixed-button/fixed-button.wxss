@@ -24,6 +24,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.data-v-56076b64:export {
+  primaryColor: #409eff;
+}
+.data-v-56076b64:export {
+  primaryColor: #409eff;
+}
 @-webkit-keyframes spin-data-v-56076b64 {
 100% {
     -webkit-transform: rotate(360deg);

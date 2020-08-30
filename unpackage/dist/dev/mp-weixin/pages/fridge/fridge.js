@@ -11,9 +11,9 @@
 /* 9 */,
 /* 10 */,
 /* 11 */
-/*!*********************************************************************************************************!*\
-  !*** /Users/frostace/Documents/HBuilderProjects/FreshButler/main.js?{"page":"pages%2Ffridge%2Ffridge"} ***!
-  \*********************************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** /Users/frostace/Documents/GitHub/FreshButler/main.js?{"page":"pages%2Ffridge%2Ffridge"} ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26,9 +26,9 @@ createPage(_fridge.default);
 
 /***/ }),
 /* 12 */
-/*!**************************************************************************************!*\
-  !*** /Users/frostace/Documents/HBuilderProjects/FreshButler/pages/fridge/fridge.vue ***!
-  \**************************************************************************************/
+/*!****************************************************************************!*\
+  !*** /Users/frostace/Documents/GitHub/FreshButler/pages/fridge/fridge.vue ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -66,9 +66,9 @@ component.options.__file = "pages/fridge/fridge.vue"
 
 /***/ }),
 /* 13 */
-/*!*********************************************************************************************************************!*\
-  !*** /Users/frostace/Documents/HBuilderProjects/FreshButler/pages/fridge/fridge.vue?vue&type=template&id=41415e26& ***!
-  \*********************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** /Users/frostace/Documents/GitHub/FreshButler/pages/fridge/fridge.vue?vue&type=template&id=41415e26& ***!
+  \***********************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -87,9 +87,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 /* 14 */
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/frostace/Documents/HBuilderProjects/FreshButler/pages/fridge/fridge.vue?vue&type=template&id=41415e26& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/frostace/Documents/GitHub/FreshButler/pages/fridge/fridge.vue?vue&type=template&id=41415e26& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -105,6 +105,9 @@ var components = {
   },
   fixedButton: function() {
     return __webpack_require__.e(/*! import() | components/fixed-button/fixed-button */ "components/fixed-button/fixed-button").then(__webpack_require__.bind(null, /*! @/components/fixed-button/fixed-button.vue */ 43))
+  },
+  uniFab: function() {
+    return __webpack_require__.e(/*! import() | components/uni-fab/uni-fab */ "components/uni-fab/uni-fab").then(__webpack_require__.bind(null, /*! @/components/uni-fab/uni-fab.vue */ 50))
   }
 }
 var render = function() {
@@ -120,9 +123,9 @@ render._withStripped = true
 
 /***/ }),
 /* 15 */
-/*!***************************************************************************************************************!*\
-  !*** /Users/frostace/Documents/HBuilderProjects/FreshButler/pages/fridge/fridge.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** /Users/frostace/Documents/GitHub/FreshButler/pages/fridge/fridge.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -135,14 +138,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 /* 16 */
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/frostace/Documents/HBuilderProjects/FreshButler/pages/fridge/fridge.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/frostace/Documents/GitHub/FreshButler/pages/fridge/fridge.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniIndexedList = function uniIndexedList() {__webpack_require__.e(/*! require.ensure | components/uni-indexed-list/uni-indexed-list */ "components/uni-indexed-list/uni-indexed-list").then((function () {return resolve(__webpack_require__(/*! @/components/uni-indexed-list/uni-indexed-list.vue */ 36));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var fixedButton = function fixedButton() {__webpack_require__.e(/*! require.ensure | components/fixed-button/fixed-button */ "components/fixed-button/fixed-button").then((function () {return resolve(__webpack_require__(/*! @/components/fixed-button/fixed-button.vue */ 43));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -163,104 +166,86 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ 124);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var uniIndexedList = function uniIndexedList() {__webpack_require__.e(/*! require.ensure | components/uni-indexed-list/uni-indexed-list */ "components/uni-indexed-list/uni-indexed-list").then((function () {return resolve(__webpack_require__(/*! @/components/uni-indexed-list/uni-indexed-list.vue */ 36));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var fixedButton = function fixedButton() {__webpack_require__.e(/*! require.ensure | components/fixed-button/fixed-button */ "components/fixed-button/fixed-button").then((function () {return resolve(__webpack_require__(/*! @/components/fixed-button/fixed-button.vue */ 43));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniFab = function uniFab() {__webpack_require__.e(/*! require.ensure | components/uni-fab/uni-fab */ "components/uni-fab/uni-fab").then((function () {return resolve(__webpack_require__(/*! @/components/uni-fab/uni-fab.vue */ 50));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniIcons = function uniIcons() {Promise.all(/*! require.ensure | components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-icons/uni-icons")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-icons/uni-icons.vue */ 57));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 {
   components: {
     uniIndexedList: uniIndexedList,
-    fixedButton: fixedButton },
+    fixedButton: fixedButton,
+    uniFab: uniFab,
+    uniIcons: uniIcons },
 
   data: function data() {
     return {
-      ingredientList: [
+      popperExpanded: false,
+      popperIcons: [
       {
-        "letter": "主食",
-        "data": [
-        "山东拉面",
-        "意面",
-        "年糕",
-        "大米"] },
+        imgPath: "../../static/icon/edit.png",
+        text: "编辑" },
 
 
       {
-        "letter": "蔬菜",
-        "data": [
-        "大白菜",
-        "莴苣",
-        "西洋菜",
-        "芥兰苗",
-        "胡萝卜",
-        "鸡腿菇"] },
-
-
-      {
-        "letter": "肉类",
-        "data": [
-        "鸡胸肉",
-        "牛尾",
-        "排骨",
-        "五花肉",
-        "鸡翅",
-        "牛绞肉"] },
-
-
-      {
-        "letter": "水果",
-        "data": [
-        "香蕉",
-        "苹果",
-        "西瓜",
-        "柠檬",
-        "橙子",
-        "榴莲"] },
-
-
-      {
-        "letter": "调料",
-        "data": [
-        "盐",
-        "糖",
-        "蕃茄酱",
-        "胡椒粉",
-        "小茴香",
-        "醋",
-        "酱油"] },
-
-
-      {
-        "letter": "饮料",
-        "data": [
-        "可乐",
-        "柠檬汁",
-        "白葡萄酒"] },
-
-
-      {
-        "letter": "其他",
-        "data": [
-        "榨菜"] }],
-
+        imgPath: "../../static/icon/dice-five.png",
+        text: "随机选菜" }],
 
 
       selectedIngredients: [] };
 
   },
-  computed: {
+  computed: _objectSpread({},
+  (0, _vuex.mapState)(['login', 'ingredientList']), {
     trimmedIngredients: function trimmedIngredients() {
       var completeIngredients = this.selectedIngredients.map(function (item) {return item.charAt(0);}).toString();
       return completeIngredients.length > 6 ? completeIngredients.slice(0, 6) + "..." : completeIngredients;
-    } },
+    } }),
 
   methods: {
     bindClick: function bindClick(e, obj) {
       var ingrdtIdx = this.selectedIngredients.indexOf(e.item.name);
       ingrdtIdx !== -1 ? this.selectedIngredients.splice(ingrdtIdx, 1) : this.$set(this.selectedIngredients, this.selectedIngredients.length, e.item.name);
+    },
+    handleClickItem: function handleClickItem(e, text) {
+      uni.$emit('hideItems');
+    },
+    trigger: function trigger() {},
+    globalClick: function globalClick() {
+      uni.$emit('hideItems');
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 17 */
-/*!************************************************************************************************************************!*\
-  !*** /Users/frostace/Documents/HBuilderProjects/FreshButler/pages/fridge/fridge.vue?vue&type=style&index=0&lang=scss& ***!
-  \************************************************************************************************************************/
+/*!**************************************************************************************************************!*\
+  !*** /Users/frostace/Documents/GitHub/FreshButler/pages/fridge/fridge.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -273,9 +258,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 /* 18 */
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/frostace/Documents/HBuilderProjects/FreshButler/pages/fridge/fridge.vue?vue&type=style&index=0&lang=scss& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--8-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-2!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/dist/cjs.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!/Users/frostace/Documents/GitHub/FreshButler/pages/fridge/fridge.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
