@@ -143,7 +143,12 @@ var _default =
       href: 'https://uniapp.dcloud.io/component/README?id=uniui' };
 
   },
-  methods: {} };exports.default = _default;
+  methods: {},
+
+
+  onLoad: function onLoad(options) {
+    console.log(options);
+  } };exports.default = _default;
 
 /***/ }),
 

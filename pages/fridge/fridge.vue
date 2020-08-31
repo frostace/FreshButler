@@ -1,8 +1,8 @@
 <template>
 	<view @click="globalClick">
-		<uni-indexed-list :options="ingredientList" :showSelect="false" @click="bindClick"></uni-indexed-list>
+		<uni-indexed-list :options="getIngredientList" :showSelect="false" @click="bindClick"></uni-indexed-list>
 		<view class="floating-section">
-			<fixed-button>
+			<fixed-button @tap="discoverDishes">
 				<view class="floating-discovery">
 					<view
 						v-if="selectedIngredients.length > 0"
@@ -47,7 +47,8 @@
 	import fixedButton from "@/components/fixed-button/fixed-button.vue";
 	import uniFab from '@/components/uni-fab/uni-fab.vue';
 	import uniIcons from '@/components/uni-icons/uni-icons.vue';
-	import {mapState} from 'vuex';
+	import { mapState, mapGetters } from 'vuex';
+	import object2params from '../../helpers/object2params.js';
 	
 	export default {
 		components: {
@@ -74,7 +75,7 @@
 			};
 		},
 		computed: {
-			...mapState(['login', 'ingredientList']),
+			...mapGetters(['getIngredientList']),
 			trimmedIngredients() {
 				let completeIngredients = this.selectedIngredients.map(item => item.charAt(0)).toString();
 				return completeIngredients.length > 6 ? completeIngredients.slice(0, 6) + "..." : completeIngredients;
@@ -91,6 +92,15 @@
 			trigger() {},
 			globalClick() {
 				uni.$emit('hideItems');
+			},
+			discoverDishes(e) {
+				// maintain vuex randomized
+				// maintain vuex selectedIngredients
+				
+				uni.switchTab({
+					url: "/pages/index/index",
+					// params to be concatenated
+				})
 			}
 		}
 	}

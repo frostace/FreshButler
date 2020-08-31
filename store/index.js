@@ -296,6 +296,11 @@ const state = {
 	]
 };
 
+const getters = {
+	getIngredientList: (state) => state.ingredientList,
+	getSelectedIngredients: (state) => state.selectedIngredients,
+};
+
 const mutations = {  
 	login(state, provider) {  
 		console.log(state)  
@@ -315,7 +320,7 @@ const mutations = {
 
 export default new Vuex.Store({
 	state,
-	// getters,
+	getters,
 	mutations,
 	// actions,
 	modules: {},

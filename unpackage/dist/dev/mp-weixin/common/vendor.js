@@ -2034,6 +2034,11 @@ var state = {
 
 
 
+var getters = {
+  getIngredientList: function getIngredientList(state) {return state.ingredientList;},
+  getSelectedIngredients: function getSelectedIngredients(state) {return state.selectedIngredients;} };
+
+
 var mutations = {
   login: function login(state, provider) {
     console.log(state);
@@ -2053,7 +2058,7 @@ var mutations = {
 
 new _vuex.default.Store({
   state: state,
-  // getters,
+  getters: getters,
   mutations: mutations,
   // actions,
   modules: {} });exports.default = _default;
@@ -3008,6 +3013,26 @@ var index_esm = {
 
 /* harmony default export */ __webpack_exports__["default"] = (index_esm);
 
+
+/***/ }),
+
+/***/ 125:
+/*!*****************************************************************************!*\
+  !*** /Users/frostace/Documents/GitHub/FreshButler/helpers/object2params.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var object2params = function object2params(obj) {
+  var output = [];
+  for (var key in obj) {
+    output.push(key + "=" + JSON.stringify(obj[key]));
+  }
+  return output.join("&");
+};var _default =
+
+object2params;exports.default = _default;
 
 /***/ }),
 

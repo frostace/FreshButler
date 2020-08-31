@@ -194,7 +194,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ 124);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var uniIndexedList = function uniIndexedList() {__webpack_require__.e(/*! require.ensure | components/uni-indexed-list/uni-indexed-list */ "components/uni-indexed-list/uni-indexed-list").then((function () {return resolve(__webpack_require__(/*! @/components/uni-indexed-list/uni-indexed-list.vue */ 36));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var fixedButton = function fixedButton() {__webpack_require__.e(/*! require.ensure | components/fixed-button/fixed-button */ "components/fixed-button/fixed-button").then((function () {return resolve(__webpack_require__(/*! @/components/fixed-button/fixed-button.vue */ 43));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniFab = function uniFab() {__webpack_require__.e(/*! require.ensure | components/uni-fab/uni-fab */ "components/uni-fab/uni-fab").then((function () {return resolve(__webpack_require__(/*! @/components/uni-fab/uni-fab.vue */ 50));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniIcons = function uniIcons() {Promise.all(/*! require.ensure | components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-icons/uni-icons")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-icons/uni-icons.vue */ 57));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _vuex = __webpack_require__(/*! vuex */ 124);
+var _object2params = _interopRequireDefault(__webpack_require__(/*! ../../helpers/object2params.js */ 125));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var uniIndexedList = function uniIndexedList() {__webpack_require__.e(/*! require.ensure | components/uni-indexed-list/uni-indexed-list */ "components/uni-indexed-list/uni-indexed-list").then((function () {return resolve(__webpack_require__(/*! @/components/uni-indexed-list/uni-indexed-list.vue */ 36));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var fixedButton = function fixedButton() {__webpack_require__.e(/*! require.ensure | components/fixed-button/fixed-button */ "components/fixed-button/fixed-button").then((function () {return resolve(__webpack_require__(/*! @/components/fixed-button/fixed-button.vue */ 43));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniFab = function uniFab() {__webpack_require__.e(/*! require.ensure | components/uni-fab/uni-fab */ "components/uni-fab/uni-fab").then((function () {return resolve(__webpack_require__(/*! @/components/uni-fab/uni-fab.vue */ 50));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniIcons = function uniIcons() {Promise.all(/*! require.ensure | components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-icons/uni-icons")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-icons/uni-icons.vue */ 57));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 {
   components: {
@@ -221,7 +222,7 @@ var _vuex = __webpack_require__(/*! vuex */ 124);function ownKeys(object, enumer
 
   },
   computed: _objectSpread({},
-  (0, _vuex.mapState)(['login', 'ingredientList']), {
+  (0, _vuex.mapGetters)(['getIngredientList']), {
     trimmedIngredients: function trimmedIngredients() {
       var completeIngredients = this.selectedIngredients.map(function (item) {return item.charAt(0);}).toString();
       return completeIngredients.length > 6 ? completeIngredients.slice(0, 6) + "..." : completeIngredients;
@@ -238,6 +239,15 @@ var _vuex = __webpack_require__(/*! vuex */ 124);function ownKeys(object, enumer
     trigger: function trigger() {},
     globalClick: function globalClick() {
       uni.$emit('hideItems');
+    },
+    discoverDishes: function discoverDishes(e) {
+      // maintain vuex randomized
+      // maintain vuex selectedIngredients
+
+      uni.switchTab({
+        url: "/pages/index/index"
+        // params to be concatenated
+      });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
