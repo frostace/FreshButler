@@ -8,6 +8,7 @@ const state = {
 	token: '',  
 	avatarUrl: '',  
 	userName: '',
+	randomized: false,
 	ingredientList: [
 		{
 			"letter": "主食",
@@ -78,6 +79,7 @@ const state = {
 			]
 		},
 	],
+	selectedIngredients: [],
 	cookableMeatDishes: [
 		{
 			name: "土豆排骨",
@@ -299,29 +301,45 @@ const state = {
 const getters = {
 	getIngredientList: (state) => state.ingredientList,
 	getSelectedIngredients: (state) => state.selectedIngredients,
+	getRandomized: (state) => state.randomized,
+};
+
+const actions = {
+	async commitSelectedIngredients({ commit }, ingrdts) {
+        commit("pushSelectedIngredients", ingrdts);
+    },
+	async commitRandomized({commit}, randomClicked) {
+		commit("pushRandomized", randomClicked);
+	}
 };
 
 const mutations = {  
 	login(state, provider) {  
-		console.log(state)  
-		console.log(provider)  
-		state.login = true;  
-		state.token = provider.token;  
-		state.userName = provider.userName;  
-		state.avatarUrl = provider.avatarUrl;  
+		console.log(state)
+		console.log(provider)
+		state.login = true;
+		state.token = provider.token;
+		state.userName = provider.userName;
+		state.avatarUrl = provider.avatarUrl;
 	},  
 	logout(state) {  
-		state.login = false;  
-		state.token = '';  
-		state.userName = '';  
-		state.avatarUrl = '';  
-	}  
+		state.login = false;
+		state.token = '';
+		state.userName = '';
+		state.avatarUrl = '';
+	},
+	pushSelectedIngredients(state, ingrdts) {
+		state.selectedIngredients = ingrdts;
+	},
+	pushRandomized(state, randomClicked) {
+		state.randomized = randomClicked;
+	}
 };
 
 export default new Vuex.Store({
 	state,
 	getters,
 	mutations,
-	// actions,
+	actions,
 	modules: {},
 });

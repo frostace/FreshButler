@@ -9,7 +9,7 @@
 				class="uni-indexed-list__item" 
 				:class="{
 					'uni-indexed-list__item-active' : item.active,
-					'uni-indexed-list__item-editing' : item.editing,
+					'uni-indexed-list__item-editing' : item.editing || editingAll,
 					'uni-indexed-list__item-insuff' : item.amount < item.baseUnit, // disable minus button
 					'uni-indexed-list__item-runningout' : item.amount < item.thresh && item.amount > 0, // highlight hint
 					'uni-indexed-list__item-runout' : item.amount <= 0, // grayify whole button
@@ -65,6 +65,10 @@
 			showSelect: {
 				type: Boolean,
 				default: false
+			},
+			editingAll: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {
@@ -72,15 +76,17 @@
 				itemList: this.list,
 			}
 		},
+		computed: {
+		},
 		methods: {
 			handleItemTap(e, item, index) {
 				// don't handle if it's editing
-				if (item.editing) return;
+				if (item.editing || this.editingAll) return;
 				this.$set(this.itemList.items, item.itemIndex, {
 					...item,
 					active: !item.active
 				});
-				let idx = this.idx;
+				let idx = this.idx; // dont know why not working if put in block below
 				this.$emit("itemClick", {
 					idx,
 					index
@@ -110,6 +116,7 @@
 				console.log(this.itemList.items);
 			}
 		},
+		
 	}
 </script>
 

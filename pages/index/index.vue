@@ -5,17 +5,21 @@
 </template>
 
 <script>
+	import { mapGetters, mapActions } from 'vuex';
 	export default {
 		data() {
 			return {
 				href: 'https://uniapp.dcloud.io/component/README?id=uniui'
 			}
 		},
+		computed: {
+			...mapGetters(['getRandomized', 'getSelectedIngredients']),
+		},
 		methods: {
 
 		},
-		onLoad(options) {
-			console.log(options);
+		onShow() {
+			console.log(this.getRandomized, this.getSelectedIngredients);
 		}
 	}
 </script>

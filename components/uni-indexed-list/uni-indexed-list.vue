@@ -10,10 +10,17 @@
 			<cell v-for="(list, idx) in lists" :key="idx" :ref="'uni-indexed-list-' + idx">
 				<!-- #endif -->
 				<!-- #ifndef APP-NVUE -->
-				<scroll-view :scroll-into-view="scrollViewId" class="uni-indexed-list__scroll" scroll-y>
+				<scroll-view :scroll-into-view="scrollViewId" class="uni-indexed-list__scroll" :class="{'uni-indexed-list__scroll-editing': editingAll}"scroll-y>
 					<view v-for="(list, idx) in lists" :key="idx" :id="'uni-indexed-list-' + idx">
 						<!-- #endif -->
-						<uni-indexed-list-item :list="list" :loaded="loaded" :idx="idx" :showSelect="showSelect" @itemClick="onClick"></uni-indexed-list-item>
+						<uni-indexed-list-item 
+							:list="list" 
+							:loaded="loaded" 
+							:idx="idx" 
+							:showSelect="showSelect" 
+							:editingAll="editingAll" 
+							@itemClick="onClick"
+						></uni-indexed-list-item>
 						<!-- #ifndef APP-NVUE -->
 					</view>
 				</scroll-view>
@@ -98,6 +105,10 @@
 			showSelect: {
 				type: Boolean,
 				default: false
+			},
+			editingAll: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {
@@ -119,15 +130,25 @@
 					this.setList()
 				},
 				deep: true
+			},
+			editingAlls: {
+				handler: function(val) {
+					console.log("modified", val)
+				}
+				
 			}
 		},
 		mounted() {
 			setTimeout(() => {
 				this.setList()
-			}, 50)
+			}, 50);
 			setTimeout(() => {
 				this.loaded = true
 			}, 300);
+			console.log(this.editingAll);
+		},
+		updated() {
+			console.log(this.editingAll);
 		},
 		methods: {
 			setList() {
@@ -263,7 +284,6 @@
 	}
 
 	.uni-indexed-list__scroll {
-		padding-bottom: 60px;
 		flex: 1;
 	}
 
