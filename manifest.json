@@ -38,7 +38,10 @@
             },
             "ios" : {},
             "sdkConfigs" : {}
-        }
+        },
+		"statusbar": {
+			"immersed": false
+		}
     },
     "quickapp" : {},
     "mp-weixin" : {

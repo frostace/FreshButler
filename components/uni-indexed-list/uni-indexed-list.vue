@@ -131,12 +131,6 @@
 				},
 				deep: true
 			},
-			editingAlls: {
-				handler: function(val) {
-					console.log("modified", val)
-				}
-				
-			}
 		},
 		mounted() {
 			setTimeout(() => {
@@ -145,10 +139,8 @@
 			setTimeout(() => {
 				this.loaded = true
 			}, 300);
-			console.log(this.editingAll);
 		},
 		updated() {
-			console.log(this.editingAll);
 		},
 		methods: {
 			setList() {
@@ -272,7 +264,8 @@
 </script>
 <style scoped>
 	.uni-indexed-list {
-		position: absolute;
+		/* position: absolute; */
+		height: calc(100vh - 65px - var(--status-bar-height) - 60px);
 		left: 0;
 		top: 0;
 		right: 0;

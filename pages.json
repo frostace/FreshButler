@@ -3,8 +3,10 @@
 		{
 			"path": "pages/fridge/fridge",
 			"style": {
-				"navigationBarTitleText": "冰箱",
-				"navigationBarBackgroundColor": "#eee"
+				"navigationStyle": "custom"
+				// "navigationBarTitleText": "冰箱",
+				// "navigationBarBackgroundColor": "#eee"
+				
 			}
 		},
         {

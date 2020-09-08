@@ -33,19 +33,22 @@
 					</view>
 				</view>
 				<view class="uni-indexed-list__item-amount-indicator"></view>
+				<view class="uni-indexed-list__item-delete" @click="deleteItem($event, item, index)">
+					<image class="uni-indexed-list__item-delete-icon" src="../../static/icon/cross.png" mode="scaleToFill"></image>
+				</view>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	import uniIcons from '../uni-icons/uni-icons.vue';
+	// import uniIcons from '../uni-icons/uni-icons.vue';
 	// import _ from "lodash";
 	
 	export default {
 		name: 'UniIndexedList',
 		components: {
-			uniIcons
+			// uniIcons
 		},
 		props: {
 			loaded: {
@@ -92,6 +95,10 @@
 					index
 				});
 			},
+			deleteItem(e, item, index) {
+				console.log("trying to delete: ", item.name);
+				// delete item of 'index'
+			},
 			longPress(item) {
 				this.$set(this.itemList.items, item.itemIndex, {
 					...item,
@@ -99,14 +106,14 @@
 				});
 			},
 			updateAmount(opr, item) {
-				// minus check
+				// negative check
 				let newAmount = item.amount + opr * item.baseUnit;
 				if (newAmount < 0) return;
 				this.$set(this.itemList.items, item.itemIndex, {
 					...item,
 					amount: newAmount
 				});
-				console.log(this.itemList.items);
+				// console.log(this.itemList.items);
 				// if (newAmount === 0) {
 				// 	// TODO: confirm before removal
 				// 	this.itemList.items.splice(item.itemIndex, 1);
@@ -114,7 +121,8 @@
 				// 	// update itemIndex
 				// }
 				console.log(this.itemList.items);
-			}
+			},
+			
 		},
 		
 	}
@@ -195,6 +203,9 @@
 				transform: translate(-3px, -12px);
 				font-size: 8px;
 			}
+			.uni-indexed-list__item-runout & {
+				color: #ccc;
+			}
 		}
 		&-amount {
 			width: 28px;
@@ -235,6 +246,23 @@
 			right: 3px;
 			.uni-indexed-list__item-runningout & {
 				background-color: transparentize($color: coral, $amount: 0.4);
+			}
+		}
+		&-delete {
+			width: 14px;
+			height: 14px;
+			&-icon {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			border-radius: 50%;
+			position: absolute;
+			visibility: hidden;
+			top: -7px;
+			left: -7px;
+			.uni-indexed-list__item-editing & {
+				visibility: visible;
 			}
 		}
 	}

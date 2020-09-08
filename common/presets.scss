@@ -171,3 +171,10 @@
     scrollbar-color: #ccc white;
     scrollbar-width: thin;
 }
+
+@mixin flex-template($dir: column, $justify: center, $align: center) {
+	display: flex;
+	flex-direction: $dir;
+	justify-content: $justify;
+	align-items: $align;
+}
