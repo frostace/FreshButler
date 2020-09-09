@@ -7,7 +7,7 @@
 				</view>
 				<view class="status_bar-buttons">
 					<text class="status_bar-icon iconfont" @click="showModal">&#xe629;</text> <!-- add -->
-					<text class="status_bar-icon iconfont">&#xe60c;</text>
+					<text class="status_bar-icon iconfont" @click="">&#xe60c;</text>
 				</view>
 			</view>
 		</view>
@@ -153,7 +153,7 @@
 			}
 		},
 		methods: {
-			...mapActions(['commitSelectedIngredients', 'commitRandomized']),
+			...mapActions(['commitIngredientList', 'commitSelectedIngredients', 'commitRandomized']),
 			clickSingleDish(e, obj) {
 				const newSelectedIngredients = this.getSelectedIngredients;
 				let ingrdtIdx = newSelectedIngredients.indexOf(e.item.name);
@@ -196,12 +196,18 @@
 				this.$refs.modal.showModal();
 			}, 
 			onConfirmClick() {
-				console.log("adding: ", this.configuredName, this.configuredAmount, this.configuredCategory);
-				// add dish to corresponding section
+				// construct new ingredient list
+				const newIngrdt = {
+					name: this.configuredName,
+					amount: this.configuredAmount,
+					category: this.configuredCategory,
+				};
+				const newIngrdtList = this.constructNewIngrdtList(newIngrdt);
+				this.commitIngredientList(newIngrdtList);
 				// clear configured dish attributes 
 				this.clearConfiguredDishAttr();
 			},
-			onCalcelClick() {
+			onCancelClick() {
 				
 			},
 			clearConfiguredDishAttr() {
@@ -211,6 +217,17 @@
 			},
 			handleSelectChange(selected) {
 				this.configuredCategory = selected.newVal;
+			},
+			constructNewIngrdtList(newIngrdtAttr) {
+				// validate new ingrdt
+				if (this.getIngredientList.some(category => category.data.some(ingrdt => ingrdt === newIngrdtAttr.name) )) {
+					console.log("input ingredient name already exist")
+					return;
+				}
+				return this.getIngredientList.map(category => category.letter === newIngrdtAttr.category ? {
+					...category,
+					"data": [...category.data, newIngrdtAttr.name],
+				} : category);
 			}
 		}
 	}

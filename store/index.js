@@ -305,6 +305,9 @@ const getters = {
 };
 
 const actions = {
+	async commitIngredientList({ commit }, newIngredientList) {
+		commit("pushIngredientList", newIngredientList);
+	},
 	async commitSelectedIngredients({ commit }, ingrdts) {
         commit("pushSelectedIngredients", ingrdts);
     },
@@ -315,8 +318,6 @@ const actions = {
 
 const mutations = {  
 	login(state, provider) {  
-		console.log(state)
-		console.log(provider)
 		state.login = true;
 		state.token = provider.token;
 		state.userName = provider.userName;
@@ -328,12 +329,30 @@ const mutations = {
 		state.userName = '';
 		state.avatarUrl = '';
 	},
+	pushIngredientList(state, newIngredientList) {
+		state.ingredientList = newIngredientList;
+	},
+	clearIngredientList() {
+		// state.ingredientList.splice(1, 1, {
+		// 	"letter": "姜饼",
+		// 	"data": [
+		// 		"撒打算",
+		// 	]
+		// });
+		Vue.set(state.ingredientList, 1, {
+			"letter": "姜饼",
+			"data": [
+				"撒打算",
+			]
+		});
+		console.log(state.ingredientList);
+	},
 	pushSelectedIngredients(state, ingrdts) {
 		state.selectedIngredients = ingrdts;
 	},
 	pushRandomized(state, randomClicked) {
 		state.randomized = randomClicked;
-	}
+	},
 };
 
 export default new Vuex.Store({

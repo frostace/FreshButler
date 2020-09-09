@@ -81,6 +81,14 @@
 		},
 		computed: {
 		},
+		watch: {
+			list: {
+				handler: function() {
+					this.itemList = this.list;
+				},
+				deep: true
+			}
+		},
 		methods: {
 			handleItemTap(e, item, index) {
 				// don't handle if it's editing
