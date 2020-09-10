@@ -9,76 +9,161 @@ const state = {
 	avatarUrl: '',  
 	userName: '',
 	randomized: false,
-	ingredientList: [
-		{
-			"letter": "主食",
-			"data": [
-				"山东拉面",
-				"意面",
-				"年糕",
-				"大米",
-			]
-		}, 
-		{
-			"letter": "蔬菜",
-			"data": [
-				"大白菜",
-				"莴苣",
-				"西洋菜",
-				"芥兰苗",
-				"胡萝卜",
-				"鸡腿菇"
-			]
-		},
-		{
-			"letter": "肉类",
-			"data": [
-				"鸡胸肉",
-				"牛尾",
-				"排骨",
-				"五花肉",
-				"鸡翅",
-				"牛绞肉"
-			]
-		},
-		{
-			"letter": "水果",
-			"data": [
-				"香蕉",
-				"苹果",
-				"西瓜",
-				"柠檬",
-				"橙子",
-				"榴莲"
-			]
-		},
-		{
-			"letter": "调料",
-			"data": [
-				"盐",
-				"糖",
-				"蕃茄酱",
-				"胡椒粉",
-				"小茴香",
-				"醋",
-				"酱油"
-			]
-		},
-		{
-			"letter": "饮料",
-			"data": [
-				"可乐",
-				"柠檬汁",
-				"白葡萄酒",
-			]
-		},
-		{
-			"letter": "其他",
-			"data": [
-				"榨菜",
-			]
-		},
-	],
+	ingredientsByCategory: {
+		"主食": [
+			{
+				"name": "山东拉面",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "意面",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "年糕",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "大米",
+				"amount": 10,
+				"unit": "g"
+			},
+		],
+		"蔬菜": [
+			{
+				"name": "大白菜",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "莴苣",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "西洋菜",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "芥兰苗",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "胡萝卜",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "鸡腿菇",
+				"amount": 10,
+				"unit": "g"
+			},
+		],
+		"肉类": [
+			{
+				"name": "鸡胸肉",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "牛尾",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "排骨",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "五花肉",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "鸡翅",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "牛绞肉",
+				"amount": 10,
+				"unit": "g"
+			},
+		],
+		"水果": [
+			{
+				"name": "香蕉",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "苹果",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "西瓜",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "柠檬",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "橙子",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "榴莲",
+				"amount": 10,
+				"unit": "g"
+			},
+		],
+		"调料": [
+			{
+				"name": "盐",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "糖",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "蕃茄酱",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "胡椒粉",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "小茴香",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "醋",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "酱油",
+				"amount": 10,
+				"unit": "g"
+			},
+		],
+		"饮料": [
+			{
+				"name": "可乐",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "柠檬汁",
+				"amount": 10,
+				"unit": "g"
+			},{
+				"name": "白葡萄酒",
+				"amount": 10,
+				"unit": "g"
+			},
+		],
+		"其他": [
+			{
+				"name": "榨菜",
+				"amount": 10,
+				"unit": "g"
+			},
+		],
+	},
 	selectedIngredients: [],
 	cookableMeatDishes: [
 		{
@@ -299,14 +384,14 @@ const state = {
 };
 
 const getters = {
-	getIngredientList: (state) => state.ingredientList,
+	getIngredientsByCategory: (state) => state.ingredientsByCategory,
 	getSelectedIngredients: (state) => state.selectedIngredients,
 	getRandomized: (state) => state.randomized,
 };
 
 const actions = {
-	async commitIngredientList({ commit }, newIngredientList) {
-		commit("pushIngredientList", newIngredientList);
+	async commitIngredientsByCategory({ commit }, newIngredientsByCategory) {
+		commit("pushIngredientsByCategory", newIngredientsByCategory);
 	},
 	async commitSelectedIngredients({ commit }, ingrdts) {
         commit("pushSelectedIngredients", ingrdts);
@@ -329,8 +414,8 @@ const mutations = {
 		state.userName = '';
 		state.avatarUrl = '';
 	},
-	pushIngredientList(state, newIngredientList) {
-		state.ingredientList = newIngredientList;
+	pushIngredientsByCategory(state, newIngredientsByCategory) {
+		state.ingredientsByCategory = newIngredientsByCategory;
 	},
 	clearIngredientList() {
 		// state.ingredientList.splice(1, 1, {

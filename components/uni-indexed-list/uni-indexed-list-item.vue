@@ -33,7 +33,7 @@
 					</view>
 				</view>
 				<view class="uni-indexed-list__item-amount-indicator"></view>
-				<view class="uni-indexed-list__item-delete" @click="deleteItem($event, item, index)">
+				<view class="uni-indexed-list__item-delete" @click.stop="deleteItem($event, item, index)">
 					<image class="uni-indexed-list__item-delete-icon" src="../../static/icon/cross.png" mode="scaleToFill"></image>
 				</view>
 			</view>
@@ -104,8 +104,7 @@
 				});
 			},
 			deleteItem(e, item, index) {
-				console.log("trying to delete: ", item.name);
-				// delete item of 'index'
+				this.$emit("deleteItemFromCategory", item);
 			},
 			longPress(item) {
 				this.$set(this.itemList.items, item.itemIndex, {

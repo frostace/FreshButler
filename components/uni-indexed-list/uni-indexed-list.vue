@@ -20,6 +20,7 @@
 							:showSelect="showSelect" 
 							:editingAll="editingAll" 
 							@itemClick="onClick"
+							@deleteItemFromCategory="deleteItem"
 						></uni-indexed-list-item>
 						<!-- #ifndef APP-NVUE -->
 					</view>
@@ -154,17 +155,17 @@
 					let items = value.data.map((item, idx) => {
 						let obj = {};
 						obj.key = value.letter;
-						obj.name = item;
+						obj.name = item.name;
 						obj.itemIndex = idx;
 						// index++; 
 						// never used
 						obj.checked = item.checked ? item.checked : false;
 						obj.active = false;
 						obj.editing = false;
-						obj.amount = 10;
+						obj.amount = item.amount;
 						// TODO: temp setups for unit and baseUnit
 						obj.thresh = 10;
-						obj.unit = "克";
+						obj.unit = item.unit;
 						obj.baseUnit = 5;
 						return obj;
 					})
@@ -258,6 +259,9 @@
 					item: obj,
 					select: select
 				});
+			},
+			deleteItem(item) {
+				this.$emit("deleteItem", item);
 			}
 		}
 	}

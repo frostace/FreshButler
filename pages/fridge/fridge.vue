@@ -12,17 +12,18 @@
 			</view>
 		</view>
 		<uni-indexed-list 
-			:options="getIngredientList" 
+			:options="categorizedIngredientList" 
 			:showSelect="false" 
 			:editingAll="editingAllDishes"
 			@click="clickSingleDish"
+			@deleteItem="deleteExistingIngrdt"
 		></uni-indexed-list>
 		<view class="floating-buttons" >
 			<view class="floating-discovery" @click="discoverDishes">
 				<view
 					v-if="getSelectedIngredients.length > 0"
 					class="floating-discovery-ingrdt"
-				>{{trimmedIngredients}}
+				>{{trimmedSelectedIngredients}}
 				</view>
 				<image 
 					class="floating-button-icon" 
@@ -53,7 +54,7 @@
 			cancel-text="取消"
 			confirm-text="确认"
 			@cancel="onCancelClick"
-			@confirm="onConfirmClick">
+			@confirm="addNewIngrdt">
 			<view class="modal-content">
 				<view class="modal-row edit-ingrdt-name">
 					<view class="modal-title ingrdt-name">名称</view>
@@ -123,6 +124,7 @@
 				list: ['主食', '蔬菜', '肉类', '水果'],
 				configuredName: "",
 				configuredAmount: 0,
+				configuredUnit: "g",
 				configuredCategory: "",
 			};
 		},
@@ -132,10 +134,20 @@
 			this.demo.height = demo.height;
 		},
 		computed: {
-			...mapGetters(['getIngredientList', 'getSelectedIngredients']),
-			trimmedIngredients() {
+			...mapGetters(['getIngredientsByCategory', 'getSelectedIngredients']),
+			trimmedSelectedIngredients() {
 				let completeIngredients = this.getSelectedIngredients.map(item => item.charAt(0)).toString();
 				return completeIngredients.length > 6 ? completeIngredients.slice(0, 6) + "..." : completeIngredients;
+			},
+			categorizedIngredientList() {
+				let categorizedList = [];
+				for (let key in this.getIngredientsByCategory) {
+					categorizedList.push({
+						"letter": key,
+						"data": this.getIngredientsByCategory[key]
+					});
+				}
+				return categorizedList;
 			},
 			floatingButtons() {
 				return [
@@ -153,7 +165,7 @@
 			}
 		},
 		methods: {
-			...mapActions(['commitIngredientList', 'commitSelectedIngredients', 'commitRandomized']),
+			...mapActions(['commitIngredientsByCategory', 'commitSelectedIngredients', 'commitRandomized']),
 			clickSingleDish(e, obj) {
 				const newSelectedIngredients = this.getSelectedIngredients;
 				let ingrdtIdx = newSelectedIngredients.indexOf(e.item.name);
@@ -195,17 +207,29 @@
 			showModal() {
 				this.$refs.modal.showModal();
 			}, 
-			onConfirmClick() {
+			addNewIngrdt() {
 				// construct new ingredient list
 				const newIngrdt = {
 					name: this.configuredName,
 					amount: this.configuredAmount,
+					unit: this.configuredUnit,
 					category: this.configuredCategory,
 				};
-				const newIngrdtList = this.constructNewIngrdtList(newIngrdt);
-				this.commitIngredientList(newIngrdtList);
+				const newIngrdtsByCateg = this.constructNewIngrdtsByCateg(newIngrdt, "+");
+				this.commitIngredientsByCategory(newIngrdtsByCateg);
 				// clear configured dish attributes 
 				this.clearConfiguredDishAttr();
+			},
+			deleteExistingIngrdt(item) {
+				const category = item.key;
+				const newIngrdt = {
+					name: item.name,
+					amount: item.amount,
+					unit: item.unit,
+					category: item.key
+				};
+				const newIngrdtsByCateg = this.constructNewIngrdtsByCateg(newIngrdt, "-");
+				this.commitIngredientsByCategory(newIngrdtsByCateg);
 			},
 			onCancelClick() {
 				
@@ -213,21 +237,27 @@
 			clearConfiguredDishAttr() {
 				this.configuredName = "";
 				this.configuredAmount = 0;
-				this.configuredCategory = "";
+				this.configuredUnit = "";
 			},
 			handleSelectChange(selected) {
 				this.configuredCategory = selected.newVal;
 			},
-			constructNewIngrdtList(newIngrdtAttr) {
-				// validate new ingrdt
-				if (this.getIngredientList.some(category => category.data.some(ingrdt => ingrdt === newIngrdtAttr.name) )) {
-					console.log("input ingredient name already exist")
+			constructNewIngrdtsByCateg(newIngrdtAttr, opr="+") {
+				if (opr === "-") {
+					return {
+						...this.getIngredientsByCategory,
+						[newIngrdtAttr.category]: this.getIngredientsByCategory[newIngrdtAttr.category].filter(ingrdt => ingrdt.name !== newIngrdtAttr.name)
+					};
+				}
+				// check if ingredient already exists
+				if (this.getIngredientsByCategory[newIngrdtAttr.category].some(ingrdt => ingrdt.name !== newIngrdtAttr.name)) {
+					console.log("input ingredient name already exist");
 					return;
 				}
-				return this.getIngredientList.map(category => category.letter === newIngrdtAttr.category ? {
-					...category,
-					"data": [...category.data, newIngrdtAttr.name],
-				} : category);
+				return {
+					...this.getIngredientsByCategory,
+					[newIngrdtAttr.category]: [...this.getIngredientsByCategory[newIngrdtAttr.category], newIngrdtAttr]
+				};
 			}
 		}
 	}
