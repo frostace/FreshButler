@@ -95,6 +95,9 @@
 				</view>
 			</view>
 		</wyb-modal>
+		<uni-popup ref="popup" type="center">
+			<uni-popup-message type="warn" message="已经存在该食材!" :duration="1000"></uni-popup-message>
+		</uni-popup>
 	</view>
 </template>
 
@@ -103,12 +106,16 @@
 	import uniIcons from '@/components/uni-icons/uni-icons.vue';
 	import wybModal from '@/components/wyb-modal/wyb-modal.vue';
 	import xflSelect from '@/components/xfl-select/xfl-select.vue';
+	import uniPopup from '@/components/uni-popup/uni-popup.vue';
+	import uniPopupMessage from '@/components/uni-popup/uni-popup-message.vue';
 	
 	import { mapGetters, mapActions } from 'vuex';
 	import object2params from '../../helpers/object2params.js';
 	
 	export default {
 		components: {
+			uniPopup,
+			uniPopupMessage,
 			uniIndexedList,
 			uniIcons,
 			wybModal,
@@ -128,7 +135,7 @@
 				configuredCategory: "",
 			};
 		},
-		created () {
+		created() {
 			const demo = uni.getMenuButtonBoundingClientRect();
 			this.demo.top = demo.top;
 			this.demo.height = demo.height;
@@ -216,7 +223,7 @@
 					category: this.configuredCategory,
 				};
 				const newIngrdtsByCateg = this.constructNewIngrdtsByCateg(newIngrdt, "+");
-				this.commitIngredientsByCategory(newIngrdtsByCateg);
+				newIngrdtsByCateg === undefined || this.commitIngredientsByCategory(newIngrdtsByCateg);
 				// clear configured dish attributes 
 				this.clearConfiguredDishAttr();
 			},
@@ -229,7 +236,7 @@
 					category: item.key
 				};
 				const newIngrdtsByCateg = this.constructNewIngrdtsByCateg(newIngrdt, "-");
-				this.commitIngredientsByCategory(newIngrdtsByCateg);
+				newIngrdtsByCateg === undefined || this.commitIngredientsByCategory(newIngrdtsByCateg);
 			},
 			onCancelClick() {
 				
@@ -250,8 +257,8 @@
 					};
 				}
 				// check if ingredient already exists
-				if (this.getIngredientsByCategory[newIngrdtAttr.category].some(ingrdt => ingrdt.name !== newIngrdtAttr.name)) {
-					console.log("input ingredient name already exist");
+				if (this.getIngredientsByCategory[newIngrdtAttr.category].some(ingrdt => ingrdt.name === newIngrdtAttr.name)) {
+					this.$refs.popup.open();
 					return;
 				}
 				return {

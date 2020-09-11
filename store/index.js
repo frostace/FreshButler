@@ -391,6 +391,7 @@ const getters = {
 
 const actions = {
 	async commitIngredientsByCategory({ commit }, newIngredientsByCategory) {
+		console.log("commiting")
 		commit("pushIngredientsByCategory", newIngredientsByCategory);
 	},
 	async commitSelectedIngredients({ commit }, ingrdts) {
@@ -416,6 +417,13 @@ const mutations = {
 	},
 	pushIngredientsByCategory(state, newIngredientsByCategory) {
 		state.ingredientsByCategory = newIngredientsByCategory;
+		uni.setStorage({
+			key: 'storage_ingrdts',
+			data: newIngredientsByCategory,
+			success: function() {
+				console.log("success");
+			}
+		})
 	},
 	clearIngredientList() {
 		// state.ingredientList.splice(1, 1, {

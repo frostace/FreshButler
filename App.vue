@@ -1,10 +1,21 @@
 <script>
+import { mapActions } from 'vuex';
 export default {
+	methods: {
+		...mapActions(['commitIngredientsByCategory'])
+	},
 	onLaunch: function() {
 		console.log('App Launch');
 	},
 	onShow: function() {
 		console.log('App Show');
+		uni.getStorage({
+		    key: 'storage_ingrdts',
+		    success: (res) => {
+				// console.log(res.data)
+				res.data == undefined || this.commitIngredientsByCategory(res.data);
+		    }
+		});
 	},
 	onHide: function() {
 		console.log('App Hide');
